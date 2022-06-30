@@ -19,7 +19,7 @@
               </a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#">
-                  Update Password
+                  Update Passwordxxxxx
               </a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="{{ route('logout') }}">
