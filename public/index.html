@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advert Pdf | Buy And Sell Namibia</title>
+    <style>
+        
+        p,
+        a,
+        li {
+            font-family: 'Helvetica', 'Arial', sans-serif;
+            font-size: 14px;
+            padding-right: 10px;
+        }
+        .footer {
+            align-items: center;
+        }
+        @media only screen and (max-width: 620px) {
+            .wrapper .section {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body style="max-width: 1200px; margin: 0 auto;">
+
+    <div class="" style="width:100%; height:auto;"></div>
+        <table style="width:100%;margin-bottom: 15px; margin-top: 15px;">
+            <tr>
+                <td style="width:30%;">
+                    <img src="{{ public_path('/images/front/logo.png') }}" alt="" style="max-height: 100px;max-width: 100%;"/>
+                </td>
+                <td style="width:70%;text-align: right;">
+                    <img src="{{ public_path('/images/front/pdf_banner.png') }}" alt="" style="max-height: 100px;max-width: 100%;"/>
+                </td>
+            </tr>
+        </table>
+        <table style="width:100%;height:auto;">
+            <tr>
+                <td style="width:59%;border: 1px solid #F8F8F8;border-radius: 5px;background-color: rgba(248, 248, 248, 0.4)">
+                    <div style="text-align: center;background-color: #fff;">
+                        @if($image)
+                        <img src="{{ storage_path('app/public/images/products/'.$image) }}" alt="" style="min-height: 100px;max-width: 80%;padding: 14px;">
+                        @else
+                        <img src="https://via.placeholder.com/500" alt="" style="min-height: 100px;max-width: 100%;margin: 20px;padding: 14px;">
+                        @endif
+                    </div>
+                    <div style="border-bottom: 1px solid rgba(157, 157, 157, 0.1);"></div>
+                    <div style="padding: 14px;background-color: rgba(248, 248, 248, 0.4);">
+                        <div style="display: flex;justify-content: space-between;width: 100%;border-bottom: 1px solid rgba(157, 157, 157, 0.1);padding-bottom: 10px;">
+                            <h2 style="font-size: 16px;font-family: 'Helvetica', 'Arial', sans-serif;text-align: left;">
+                               Product Detailsx
+                            </h2>
+                            <h2 style="font-size: 16px;font-family: 'Helvetica', 'Arial', sans-serif;color:#F67D1E;text-align:right;">N$ {{ number_format((float)$price , 2, '.', ' ') }}</h2>
+                        </div>
+                        
+                        <div style="margin: 0;width: 100%">
+                            <h2 style="display: inline;font-size: 16px;font-family: 'Helvetica', 'Arial', sans-serif;text-transform: uppercase;text-align:left;">{{ $title }}</h2>
+                        </div>
+                        <div style="clear: both;"></div>
+                        <h2 style="font-size: 16px;font-family: 'Helvetica', 'Arial', sans-serif;text-align: left;border-bottom: 1px solid rgba(157, 157, 157, 0.1);padding-bottom: 10px;">
+                           Product Short Description
+                        </h2>
+                        <p class="card-text" style="line-height: 18px; color: #373737;text-align: left;">
+                            {!! str_limit($detail , 200, '') !!}
+                        </p>
+                    </div>
+                </td>
+                <td style="width:1%;"></td>
+                <td valign="top" style="width:40%;text-align:center;padding: 14px;border: 1px solid #F8F8F8;border-radius: 15px;background-color: rgba(248, 248, 248, 0.4); margin-left: 10px">
+                    <table style="width:100%;">
+                        <tr>
+                            
+                            <td style="width:50%;text-align: left;">
+                                <h2 style="font-size: 16px;font-family: 'Helvetica', 'Arial', sans-serif;text-align: center;border-bottom: 1px solid rgba(157, 157, 157, 0.1);padding-bottom: 10px;">
+                                    Contact Details
+                                </h2>
+                                <div>
+                                    @if($userimage)
+                                        @if($user->google_id || $user->fb_id || $user->linkedin_id)
+                                            <img src="{{ $userimage }}" alt="" style="max-width: 100%;margin-right: 10px;min-height: 100px;border-radius: 325%;max-height: 160px;">
+                                        @else
+                                            <img src="{{ storage_path('app/public/images/user_avatars/').'/thumb-'.$userimage }}" alt="" style="max-width: 100%;margin-right: 10px;min-height: 100px;border-radius: 325%;max-height: 160px;">
+                                        @endif
+                                    @else
+                                        <img src="{{ public_path('images/front/placeholder-user.png') }}" alt="" style="max-width: 100%;margin-right: 10px;min-height: 100px;border-radius: 325%;max-height: 160px;">
+                                    @endif
+                                </div>
+                            </td>
+                            <td style="width:50%;text-align: right;">
+                                <h2 style="font-size: 16px;font-family: 'Helvetica', 'Arial', sans-serif;text-align: center;border-bottom: 1px solid rgba(157, 157, 157, 0.1);padding-bottom: 10px;">
+                                    QR Code
+                                </h2>
+                                <div class="">
+                                    <img style="max-width: 100%;margin-left: 10px;min-height: 100px;" src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->merge(public_path('/images/front/qrcode-logo.png'), 0.3, true)->errorCorrection('H')->size(500)->generate($link)); !!} ">
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table style="width:100%;margin-top: 20px">
+                        <tr>
+                            <td style="width:10%;text-align: left;">
+                                <p>Name:</p>
+                                <p>Email:</p>
+                                <p>Mobile:</p>
+                                <p>location:</p>
+                            </td>
+                            <td style="width:90%;text-align: left;">
+                                <p>{{ $username }} </p>
+                                <p>{{ $email }} </p>
+                                <p>{{ $mobile }} </p>
+                                <p>{{ $location }} </p>
+                            </td>
+                        </tr>
+                    </table>
+                    <table style="width:100%;margin-top: 40px">
+                        <tr>
+                            <td style="width:50%;text-align: left;">
+                                <img src="{{ $image1 ? storage_path('app/public/images/products/'.$image1) : '' }}" alt="" style="min-height: 120px;max-width: 90%;padding: 5px;">
+                            </td>
+                            <td style="width:50%;text-align: right;">
+                                <img src="{{ $image2 ? storage_path('app/public/images/products/'.$image2) : '' }}" alt="" style="min-height: 120px;max-width: 90%;padding: 5px;">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width:50%;text-align: left;">
+                                <img src="{{ $image3 ? storage_path('app/public/images/products/'.$image3) : '' }}" alt="" style="min-height: 120px;max-width: 90%;padding: 5px;">
+                            </td>
+                            <td style="width:50%;text-align: right;">
+                                <img src="{{ $image4 ? storage_path('app/public/images/products/'.$image4) : '' }}" alt="" style="min-height: 120px;max-width: 90%;padding: 5px;">
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <table style="width:100%;height:auto;margin-top: 2px;margin-bottom: 15px;">
+            <tr>
+                <td style="width:100%;padding: 14px;border: 1px solid #F8F8F8;border-radius: 10px;background-color: rgba(248, 248, 248, 0.4);">
+                    <div class="card-text" style="line-height: 18px; color: #373737;text-align: left;">
+                        <table>
+                          <tr>
+                            <td><img src="{{ public_path('/images/front/site.png') }}" style="min-height: 14px;max-width: 20px;margin-right: 10px;" alt=""></td>
+                            <td><p>{{ $url }}</p></td>
+                          </tr>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <!-- <div class="footer" align="center" style="background: #181B3E; color: #F8F8F8;height: 60px; margin: 0;border: 1px solid #F8F8F8;
+            border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;">
+            <p style="font-size: 16px;"><span style="margin-right: 300px;">namdeal.com.na</span> copyrights reserved 2021</p>
+        </div> -->
+        
+    </div>
+    
+</body>
+</html>

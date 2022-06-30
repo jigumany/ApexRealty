@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +14,24 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+
+    Route::get('/', function () {
+        return view('modules.dashboard.index');
+    });
+
+    Route::get('/forbidden', function () {
+        return view('modules.forbidden.forbidden_area');
+    });
+
+});
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->to('/admin');
 });
+
+// Auth Routes
+Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('login/post', [LoginController::class, 'login'])->name('login.post');
+Route::get('logout', [LoginController::class, 'logout'])->name('logout');
+
