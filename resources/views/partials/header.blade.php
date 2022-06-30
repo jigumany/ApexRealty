@@ -8,7 +8,7 @@
   <ul class="navbar-nav ml-auto" style="padding: 1rem 0.5rem!important;">
       <li class=" nav-item d-none d-sm-inline-block">
           <a class="dropdown-toggle nav-link" href="#" data-toggle="dropdown">
-              <span class="user-name mr-3">Welcome <b>{{ Auth::user()->name() }}</b></span>
+              <span class="user-name mr-3">Welcome <b>{{ Auth::user()->name }}</b></span>
               <span>
                   <img class="img-circle" src="" alt="avatar" height="35" width="35">
               </span>
@@ -19,7 +19,7 @@
               </a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#">
-                  Update Passwordxxxxx
+                  Update Password
               </a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="{{ route('logout') }}">

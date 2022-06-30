@@ -48,8 +48,8 @@ class DatabaseSeeder extends Seeder
         }
         // insert sample user as the system admin
         DB::table('users')->insert([
-           'name' => 'George',
-           'email' => 'george@web2web.co.za',
+           'name' => 'Dean',
+           'email' => 'dean@web2web.co.za',
            'position_title' => 'Web2web Support',
            'password' => bcrypt('walker25'),
            'is_super_admin' => 1,
