@@ -36,7 +36,7 @@
 											type="email"
 											name="email" 
 											id="email"
-											class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white outline outline-1 outline-black rounded text-sm shadow focus:outline-none w-full form-control"
+											class="border border-black px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow w-full invalid:border-red-500 ring-0 form-control"
 											placeholder="Email" 
 											style="transition: all 0.15s ease 0s;" 
 										/>
@@ -44,15 +44,20 @@
 									<div class="relative w-full mb-3">
 										<label class="block uppercase text-gray-700 text-xs font-bold mb-2"
 											for="grid-password">Password</label>
-											<input 
-												type="password"
-												name="password" 
-												id="password"
-												class="border-0 px-3 py-3 placeholder-gray-400 text-gray-700 bg-white outline outline-1 outline-black rounded text-sm shadow focus:outline-none w-full form-control"
-												placeholder="Password"
-											 	style="transition: all 0.15s ease 0s;" 
-											/>
+										<input 
+											type="password"
+											name="password" 
+											id="password"
+											class="border border-black px-3 py-3 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow w-full invalid:border-red-500 ring-0 form-control"
+											placeholder="Password"
+											style="transition: all 0.15s ease 0s;" 
+										/>
 									</div>
+									@if($errors->all())
+										@foreach ($errors->all() as $error)
+										<span class="block first-line:text-red-500 text-sm mt-2">{{ $error }}</span>
+										@endforeach
+									@endif
 									<div class="text-center mt-6">
 										<button
 											class="bg-gray-900 text-white active:bg-gray-700 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full"
