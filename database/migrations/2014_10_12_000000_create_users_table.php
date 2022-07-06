@@ -25,6 +25,8 @@ class CreateUsersTable extends Migration
             $table->string('password')->default(bcrypt('walker25'));
             $table->rememberToken();
             $table->timestamps();
+            $table->tinyInteger('is_super_admin')->default(0);
+            $table->tinyInteger('is_admin')->default(0);
         });
     }
 

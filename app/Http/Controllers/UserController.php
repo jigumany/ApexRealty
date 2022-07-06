@@ -34,8 +34,8 @@ class UserController extends Controller
         return view('modules.users.edit', compact('title', 'user', 'user_role', 'roles'));
     }
 
-    public function update(User $user) {
-
+    public function update(User $user, Request $request) {
+        dd($request->all());
     }
 
 
