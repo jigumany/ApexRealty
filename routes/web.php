@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -23,6 +24,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/forbidden', function () {
         return view('modules.forbidden.forbidden_area');
     });
+    
+    Route::get('/users', [UserController::class, 'index']);
+    Route::get('/users/create', [UserController::class, 'create'])->name('user.create');
+    Route::post('/users/store', [UserController::class, 'store'])->name('user.store');
+    Route::put('/users/update', [UserController::class, 'update'])->name('user.update');
+    Route::get('/users/{user}/edit',[UserController::class, 'edit'])->name('user.edit');
 
 });
 

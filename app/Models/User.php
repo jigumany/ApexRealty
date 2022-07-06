@@ -8,8 +8,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-use Spatie\Permission\Traits\HasRoles;
-
 use App\Models\Lead;
 use App\Models\LeadStatus;
 use App\Models\Document;
@@ -18,7 +16,7 @@ use App\Models\TaskStatus;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, HasRoles, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable;
 
     protected $guard_name = 'web';
 
@@ -115,5 +113,13 @@ class User extends Authenticatable
     public function pendingTasks()
     {
         return $this->hasMany(Task::class, 'assigned_user_id')->where('status', TaskStatus::whereIn('name', [config('seed_data.task_statuses')[0], config('seed_data.task_statuses')[1]])->first()->id);
+    }
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class)->withTimestamps();
+    }
+    public function role() 
+    {
+        return $this->hasOne(Role::class);
     }
 }

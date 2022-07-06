@@ -21,10 +21,8 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('phone')->nullable();
             $table->string('image')->nullable();
-            $table->tinyInteger('is_super_admin')->default(0);
-            $table->tinyInteger('is_admin')->default(0);
             $table->tinyInteger('is_active')->default(1);
-            $table->string('password');
+            $table->string('password')->default(bcrypt('walker25'));
             $table->rememberToken();
             $table->timestamps();
         });
