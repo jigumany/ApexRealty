@@ -30,6 +30,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::post('/users/store', [UserController::class, 'store'])->name('user.store');
     Route::post('/users/{user}/update', [UserController::class, 'update'])->name('user.update');
     Route::get('/users/{user}/edit',[UserController::class, 'edit'])->name('user.edit');
+    Route::get('/users/{user}',[UserController::class, 'delete'])->name('user.delete');
 
 });
 

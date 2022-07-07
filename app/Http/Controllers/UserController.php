@@ -15,7 +15,7 @@ class UserController extends Controller
         return view('modules.users.index', compact('users', 'title'));
     }
 
-    public function create() {
+    public function create(Request $request) {
         $title = 'Create User';
         $roles = Role::where('name', '!=', 'Super Admin')->get();
         return view('modules.users.create', compact('title', 'roles'));
@@ -25,6 +25,7 @@ class UserController extends Controller
         $validated = $request->validated();
         $user = User::create($validated);
         $user->roles()->attach($validated['role_id']);
+        return redirect('/admin/users/')->with('status-created', 'User has been created!');
     }
     
     public function edit(User $user) {
@@ -46,6 +47,10 @@ class UserController extends Controller
         }
         return redirect('/admin/users/');
     }
-
+    public function delete(User $user, Request $request) {
+        $user->roles()->detach();
+        $user->delete();
+        return redirect('/admin/users/')->with('status-deleted', 'User has been Deleted!');
+    }
 
 }
