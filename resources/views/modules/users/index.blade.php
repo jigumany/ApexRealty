@@ -21,9 +21,12 @@
             <div class="row">
                 <div class="col-12">
                     <div class="card">
-                        <a href="{{ route('user.create') }}">
-                            Create User
-                        </a>
+                        <a href="{{ route('user.create') }}">Create User</a>
+                        @if(session()->has('user.updated.success'))
+                            <div class="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
+                                <span class="font-medium">{!! session('user.updated.success') !!}</span>
+                            </div>
+                        @endif
                         <div class="card-header">
                             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">

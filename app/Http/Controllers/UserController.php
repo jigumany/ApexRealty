@@ -34,8 +34,17 @@ class UserController extends Controller
         return view('modules.users.edit', compact('title', 'user', 'user_role', 'roles'));
     }
 
+    const FIELDS = ['name', 'email', 'position_title', 'phone'];
     public function update(User $user, Request $request) {
-        dd($request->all());
+        $title = 'Users';
+        $request->session()->flash('user.updated.success', 'User has been updated!');
+        foreach(self::FIELDS as $field) {
+            if($request->$field) {
+                $user->$field = $request->$field;
+                $user->save();
+            }
+        }
+        return redirect('/admin/users/');
     }
 
 
