@@ -35,6 +35,5 @@ class DatabaseSeeder extends Seeder
         DB::table('roles')->insert([
             'name'  =>  'Agent',
         ]);
-
     }
 }

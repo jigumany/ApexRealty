@@ -10,9 +10,10 @@ use App\Models\Role;
 class UserController extends Controller
 {
     public function index() {
+        $current_user = auth()->user();
         $users = User::all();
         $title = 'Users';
-        return view('modules.users.index', compact('users', 'title'));
+        return view('modules.users.index', compact('users', 'title', 'current_user'));
     }
 
     public function create(Request $request) {
