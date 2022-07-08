@@ -20,24 +20,12 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <div class="flash-messages mb-3">
-                        @if (session()->has('user.updated.success'))
-                        <div class="w-full p-4 text-m text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800 shadow-sm"
-                            role="alert">
-                            <span class="font-medium">{!! session('user.updated.success') !!}</span>
-                        </div>
-                        @elseif(session('status-created'))
-                        <div class="w-full p-4 text-m text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800 shadow-sm"
-                            role="alert">
-                            <span class="font-medium">{!! session('status-created') !!}</span>
-                        </div>
-                        @elseif(session('status-deleted'))
-                        <div class="w-full p-4 text-m text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800 shadow-sm"
-                            role="alert">
-                            <span class="font-medium">{!! session('status-deleted') !!}</span>
-                        </div>
+                    <div class="create-user">
+                        @if($current_user->is_super_admin === 1 || $current_user->is_admin === 1)
+                            <a class="bg-slate-900 hover:bg-slate-700 text-white transition duration-500 flex justify-center align-items-center p-3 rounded-md shadow-sm mb-3 w-[175px]" href="{{ route('user.create') }}">Create User</a>
                         @endif
                     </div>
+                    <x-alert/>
                     <div class="users grid gap-4 lg:grid-cols-3 lg:grid-rows-3 md:grid-cols-2 mb-5">
                         @foreach ($users as $user)
                         <div
@@ -48,7 +36,7 @@
                                         https://avatars.dicebear.com/api/adventurer/{$user->name}.svg" }}"
                                     alt="avatar-image">
                                     <div class="user-details__inner">
-                                        {{-- <p></p> --}}
+                                        <p>{{ $user->roles()->orderBy('name')->first()->name }}</p>
                                         <h3>{{ $user->name }}</h3>
                                     </div>
                                 </div>

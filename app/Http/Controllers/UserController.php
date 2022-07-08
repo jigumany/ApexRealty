@@ -11,7 +11,7 @@ class UserController extends Controller
 {
     public function index() {
         $current_user = auth()->user();
-        $users = User::all();
+        $users = User::with('roles')->get();
         $title = 'Users';
         return view('modules.users.index', compact('users', 'title', 'current_user'));
     }
@@ -26,7 +26,7 @@ class UserController extends Controller
         $validated = $request->validated();
         $user = User::create($validated);
         $user->roles()->attach($validated['role_id']);
-        return redirect('/admin/users/')->with('status-created', 'User has been created!');
+        return redirect('/admin/users/')->with('success', 'User has been created!');
     }
     
     public function edit(User $user) {
@@ -36,22 +36,23 @@ class UserController extends Controller
         return view('modules.users.edit', compact('title', 'user', 'user_role', 'roles'));
     }
 
-    const FIELDS = ['name', 'email', 'position_title', 'phone'];
     public function update(User $user, Request $request) {
-        $title = 'Users';
-        $request->session()->flash('user.updated.success', 'User has been updated!');
-        foreach(self::FIELDS as $field) {
-            if($request->$field) {
-                $user->$field = $request->$field;
-                $user->save();
-            }
-        }
-        return redirect('/admin/users/');
+        $user->update([
+            'name'=> $request->name,
+            'email' => $request->email,
+            'position_title' => $request->position_title,
+            'phone' => $request->phone,
+        ]);
+
+        $user->roles()->sync($request->role_id);
+        return redirect('/admin/users')->with('success', 'User has been updated!');
+
     }
+    
     public function delete(User $user, Request $request) {
         $user->roles()->detach();
         $user->delete();
-        return redirect('/admin/users/')->with('status-deleted', 'User has been Deleted!');
+        return redirect('/admin/users/')->with('success', 'User has been Deleted!');
     }
 
 }

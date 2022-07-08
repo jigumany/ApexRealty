@@ -31,7 +31,7 @@
                                     <input value="{{ $user->phone }}" class="mb-2 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="number" name="phone" id="phone">
                                     <select class="w-full mb-2" name="role_id" id="roles">
                                         @foreach ($roles as $role)
-                                            <option value="{{ $user_role->id }}" {{ $user_role->name == $role->name ? 'selected' : '' }}>{{ $role->name }}</option>
+                                            <option value="{{ $role->id }}" {{ $user_role->name == $role->name ? 'selected' : '' }}>{{ $role->name }}</option>
                                         @endforeach
                                     </select>
                                     <input class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" value="Update User">

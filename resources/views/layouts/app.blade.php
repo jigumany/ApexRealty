@@ -91,6 +91,7 @@
         <script src="{{ asset('js/dashboard.js') }}"></script>
         <script src="{{ asset('js/demo.js') }}"></script>
         <script src="{{ asset('js/scripts.js') }}"></script>
+        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
         @stack('scripts')
     </body>
 
