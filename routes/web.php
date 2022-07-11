@@ -27,8 +27,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     
     Route::get('/users', [UserController::class, 'index']);
     Route::get('/users/create', [UserController::class, 'create'])->name('user.create');
-    Route::post('/users/store', [UserController::class, 'store'])->name('user.store');
-    Route::post('/users/{user}/update', [UserController::class, 'update'])->name('user.update');
+    Route::post('/users/store/{user?}', [UserController::class, 'store'])->name('user.store');
+    // Route::post('/users/{user}/update', [UserController::class, 'update'])->name('user.update');
     Route::get('/users/{user}/edit',[UserController::class, 'edit'])->name('user.edit');
     Route::get('/users/{user}',[UserController::class, 'delete'])->name('user.delete');
 
@@ -42,4 +42,3 @@ Route::get('/', function () {
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('login/post', [LoginController::class, 'login'])->name('login.post');
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
-

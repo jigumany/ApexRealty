@@ -23,7 +23,7 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="w-full">
-                                <form action="{{ route('user.update', $user->id) }}" method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                                <form action="{{ route('user.store', $user->id) }}" method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
                                     @csrf
                                     <input value="{{ $user->name }}" class="mb-2 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="name" id="name">
                                     <input value="{{ $user->email }}" class="mb-2 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="email" name="email" id="email">

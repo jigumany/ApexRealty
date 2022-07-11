@@ -22,11 +22,20 @@ class UserController extends Controller
         return view('modules.users.create', compact('title', 'roles'));
     }
 
-    public function store(StoreUserRequest $request) {
+    public function store(StoreUserRequest $request, $user = null) {
         $validated = $request->validated();
-        $user = User::create($validated);
-        $user->roles()->attach($validated['role_id']);
-        return redirect('/admin/users/')->with('success', 'User has been created!');
+    
+        if($user) {
+            $user->update($validated);
+            $user->roles()->sync($request->role_id);
+            $msg = "User has been updated!";
+        } else {
+            $user = User::create($validated);
+            $user->roles()->attach($validated['role_id']);
+            $msg = "User has been created!";
+        }
+
+        return redirect('/admin/users/')->with('success', $msg);
     }
     
     public function edit(User $user) {
@@ -46,7 +55,6 @@ class UserController extends Controller
 
         $user->roles()->sync($request->role_id);
         return redirect('/admin/users')->with('success', 'User has been updated!');
-
     }
     
     public function delete(User $user, Request $request) {
@@ -54,5 +62,4 @@ class UserController extends Controller
         $user->delete();
         return redirect('/admin/users/')->with('success', 'User has been Deleted!');
     }
-
 }
