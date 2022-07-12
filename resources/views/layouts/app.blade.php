@@ -23,6 +23,7 @@
         <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.css') }}">
 
         <link rel="stylesheet" href="{{ asset('css/adminlte.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/jquery-confirm.css') }}">
         <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -91,10 +92,9 @@
         <script src="{{ asset('js/adminlte.js') }}"></script>
         <script src="{{ asset('js/dashboard.js') }}"></script>
         <script src="{{ asset('js/demo.js') }}"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+        <script src="{{ asset('js/jquery-confirm.js') }}"></script>
+        <script src="{{ mix('js/app.js') }}"></script>
         <script src="{{ asset('js/scripts.js') }}"></script>
-
-        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
         @stack('scripts')
     </body>
 
