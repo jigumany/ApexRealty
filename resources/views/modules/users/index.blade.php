@@ -66,8 +66,8 @@
                                     role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
                                     <div class="py-1" role="none">
                                         <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
-                                        <a href="{{ route('user.delete', $user->id) }}" class="text-red-500 block px-4 py-2 text-sm transition duration-300 hover:text-red-700" role="menuitem" tabindex="-1" id="menu-item-0">Delete</a>
-                                        <a href="#suspend" class="text-yellow-500 block px-4 py-2 text-sm transition duration-300 hover:text-yellow-700" role="menuitem" tabindex="-1" id="menu-item-1">Suspend Account</a>
+                                        <a href="#" record="user" person="{{ $user->name }}" record-id="{{ $user->id }}" class="delete text-red-500 block px-4 py-2 text-sm transition duration-300 hover:text-red-700" role="menuitem" tabindex="-1" id="menu-item-0">Delete</a>
+                                        <a href="#suspend" class="suspend text-yellow-500 block px-4 py-2 text-sm transition duration-300 hover:text-yellow-700" role="menuitem" tabindex="-1" id="menu-item-1">Suspend Account</a>
                                     </div>
                                 </div>
                             </div>

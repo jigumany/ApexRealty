@@ -24,6 +24,7 @@
 
         <link rel="stylesheet" href="{{ asset('css/adminlte.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
         <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
@@ -53,7 +54,8 @@
         </div>
 
         {{-- scripts --}}
-        <script src="{{asset('plugins/jquery/jquery.min.js') }}"></script>
+        <script src="{{ asset('js/jquery.min.js') }}"></script>
+        {{-- <script src="{{asset('plugins/jquery/jquery.min.js') }}"></script> --}}
         <script src="{{asset('plugins/jquery-ui/jquery-ui.min.js') }}"></script>
         <script>
             $.widget.bridge('uibutton', $.ui.button)
@@ -86,11 +88,12 @@
             var siteFormLoader = '{{ asset('images/admin/ajax-loader.gif') }}';
             var siteUrlGlobal = '{{ url('/') }}';
         </script>
-
         <script src="{{ asset('js/adminlte.js') }}"></script>
         <script src="{{ asset('js/dashboard.js') }}"></script>
         <script src="{{ asset('js/demo.js') }}"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
         <script src="{{ asset('js/scripts.js') }}"></script>
+
         <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
         @stack('scripts')
     </body>

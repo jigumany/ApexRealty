@@ -27,10 +27,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     
     Route::get('/users', [UserController::class, 'index']);
     Route::get('/users/create', [UserController::class, 'create'])->name('user.create');
-    Route::post('/users/store/{user?}', [UserController::class, 'store'])->name('user.store');
+    Route::post('/user/store/{user?}', [UserController::class, 'store'])->name('user.store');
     // Route::post('/users/{user}/update', [UserController::class, 'update'])->name('user.update');
     Route::get('/users/{user}/edit',[UserController::class, 'edit'])->name('user.edit');
-    Route::get('/users/{user}',[UserController::class, 'delete'])->name('user.delete');
+    Route::get('/user/delete-{user}',[UserController::class, 'delete'])->name('user.delete');
 
 });
 
