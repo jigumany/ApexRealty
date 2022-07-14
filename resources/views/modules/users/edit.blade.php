@@ -23,24 +23,25 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="w-full">
-                                <form action="{{ route('user.store', $user->id) }}" method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                                <form action="{{ route('user.store', $user->id) }}" method="POST" class="user-form">
                                     @csrf
-                                    <input value="{{ $user->name }}" class="mb-2 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="name" id="name">
-                                    <input value="{{ $user->email }}" class="mb-2 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="email" name="email" id="email">
-                                    <input value="{{ $user->position_title }}" class="mb-2 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="position_title" id="position_title">
-                                    <input value="{{ $user->phone }}" class="mb-2 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="number" name="phone" id="phone">
-                                    <select class="w-full mb-2" name="role_id" id="roles">
+                                    <input value="{{ $user->name }}" placeholder="Name" class="mb-3 shadow-sm appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="name" id="name">
+                                    <input value="{{ $user->email }}" placeholder="Email" class="mb-3 shadow-sm appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="email" name="email" id="email">
+                                    <input value="{{ $user->position_title }}" placeholder="Position" class="mb-3 shadow-sm appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="position_title" id="position_title">
+                                    <input value="{{ $user->phone }}" placeholder="Phone" class="mb-3 shadow-sm appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="number" name="phone" id="phone">
+                                    <select class="w-full mb-3 py-2 px-3 border rounded-sm shadow-sm text-gray-700 focus:outline-none focus:shadow-outline" placeholder="Assign Role" name="role_id" id="roles">
                                         @foreach ($roles as $role)
                                             <option value="{{ $role->id }}" {{ $user_role->name == $role->name ? 'selected' : '' }}>{{ $role->name }}</option>
                                         @endforeach
                                     </select>
-                                    <input class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" value="Update User">
+                                    <input class="py-2 px-3 transition duration-500 text-white hover:text-black bg-green-400 rounded-sm shadow-sm" type="submit" value="Update User">
                                     @error($errors->all())
                                         @foreach ($errors->all() as $error)
                                             {{ $error }}
                                         @endforeach
                                     @enderror
                                 </form>
+                            </div>
                             </div>
                         </div>
                     </div>

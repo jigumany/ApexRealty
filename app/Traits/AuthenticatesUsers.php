@@ -6,6 +6,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
+use App\Models\User;
 
 trait AuthenticatesUsers
 {
@@ -67,7 +68,7 @@ trait AuthenticatesUsers
     {
         $request->validate([
             $this->username() => 'required|string',
-            'password' => 'required|string',
+            'password' => 'required|string'
         ]);
     }
 
@@ -78,7 +79,7 @@ trait AuthenticatesUsers
      * @return bool
      */
     protected function attemptLogin(Request $request)
-    {
+    {   
         return $this->guard()->attempt(
             $this->credentials($request), $request->filled('remember')
         );
@@ -92,7 +93,11 @@ trait AuthenticatesUsers
      */
     protected function credentials(Request $request)
     {
-        return $request->only($this->username(), 'password');
+        return [
+            'email' => $request->email,
+            'password' => $request->password,
+            'is_active' => 1
+        ];
     }
 
     /**

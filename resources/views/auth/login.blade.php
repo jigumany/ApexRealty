@@ -55,7 +55,7 @@
 									</div>
 									@if($errors->all())
 										@foreach ($errors->all() as $error)
-										<span class="block first-line:text-red-500 text-sm mt-2">{{ $error }}</span>
+											<span class="block text-red-500 text-sm mt-2">{{ $error }}</span>
 										@endforeach
 									@endif
 									<div class="text-center mt-6">

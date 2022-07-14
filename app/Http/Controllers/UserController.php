@@ -22,17 +22,20 @@ class UserController extends Controller
         return view('modules.users.create', compact('title', 'roles'));
     }
 
-    public function store(StoreUserRequest $request, $user = null) {
+    public function store(StoreUserRequest $request, $id = null) {
         $validated = $request->validated();
-    
-        if($user) {
-            $user->update($validated);
-            $user->roles()->sync($request->role_id);
-            $msg = "User has been updated!";
+        if($id) {
+            $user = User::find($id);
+            if($user) {
+                $user->update($request->all());
+                $user->roles()->sync($request->role_id);
+                $msg = "User has been updated!";
+            }
         } else {
-            $user = User::create($validated);
+            $user = User::create($request->all());
             $user->roles()->attach($validated['role_id']);
             $msg = "User has been created!";
+
         }
 
         return redirect('/admin/users/')->with('success', $msg);
@@ -44,18 +47,6 @@ class UserController extends Controller
         $user_role = $user->roles()->orderBy('name')->first();
         return view('modules.users.edit', compact('title', 'user', 'user_role', 'roles'));
     }
-
-    // public function update(User $user, Request $request) {
-    //     $user->update([
-    //         'name'=> $request->name,
-    //         'email' => $request->email,
-    //         'position_title' => $request->position_title,
-    //         'phone' => $request->phone,
-    //     ]);
-
-    //     $user->roles()->sync($request->role_id);
-    //     return redirect('/admin/users')->with('success', 'User has been updated!');
-    // }
 
     public function suspendOrActivate(User $user) {
         if($user->is_active == 1) {

@@ -14,6 +14,7 @@ return [
     */
 
     'failed' => 'The email or password provided does not match our records.',
+    'not_active' => 'Your user is currently deactivated. Contact Admin.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
 
 ];
