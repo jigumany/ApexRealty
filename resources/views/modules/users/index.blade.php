@@ -26,6 +26,8 @@
                         @endif
                     </div>
                     <x-alert/>
+                    {{-- <x-user-table :users="$users" :current-user="$current_user"/> --}}
+
                     <div class="users grid gap-4 lg:grid-cols-3 lg:grid-rows-3 md:grid-cols-2 mb-5">
                         @foreach ($users as $user)
                             <x-user-card :current-user="$current_user" :user="$user" />
