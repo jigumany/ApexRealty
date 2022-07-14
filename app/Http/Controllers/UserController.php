@@ -45,16 +45,31 @@ class UserController extends Controller
         return view('modules.users.edit', compact('title', 'user', 'user_role', 'roles'));
     }
 
-    public function update(User $user, Request $request) {
-        $user->update([
-            'name'=> $request->name,
-            'email' => $request->email,
-            'position_title' => $request->position_title,
-            'phone' => $request->phone,
-        ]);
+    // public function update(User $user, Request $request) {
+    //     $user->update([
+    //         'name'=> $request->name,
+    //         'email' => $request->email,
+    //         'position_title' => $request->position_title,
+    //         'phone' => $request->phone,
+    //     ]);
 
-        $user->roles()->sync($request->role_id);
-        return redirect('/admin/users')->with('success', 'User has been updated!');
+    //     $user->roles()->sync($request->role_id);
+    //     return redirect('/admin/users')->with('success', 'User has been updated!');
+    // }
+
+    public function suspendOrActivate(User $user) {
+        if($user->is_active == 1) {
+            $user->update([
+                'is_active' => 0
+            ]);
+            $msg = 'User has been suspended.';
+        } else {
+            $user->update([
+                'is_active' => 1
+            ]);
+            $msg = "User has been activated.";
+        }
+        return redirect('/admin/users')->with('success', $msg);
     }
     
     public function delete(User $user, Request $request) {

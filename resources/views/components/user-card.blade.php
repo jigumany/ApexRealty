@@ -15,7 +15,7 @@
     </div>
     <div class="grid-card__user-actions flex flex-row w-100 ">
         <a class="flex-1 p-3 text-center justify-center align-items-center border-2 border-gray-100 border-r-0"
-            href="{{ 'show-profile' }}">View Profile</a>
+            href="#show-profile">View Profile</a>
         <a class="flex-1 p-3 text-center justify-center align-items-center border-2 border-gray-100"
             href="{{ route('user.edit', $user->id) }}">Edit Profile</a>
     </div>

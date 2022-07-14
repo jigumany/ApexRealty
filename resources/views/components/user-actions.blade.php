@@ -16,8 +16,12 @@
         <div x-show="open" x-transition @click.outside="open = false" class="actions-menu origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" style="display: none;"
             role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
             <div class="py-1" role="none">
-                <a href="#" record="user" person="{{ $user->name }}" record-id="{{ $user->id }}" class="delete text-red-500 block px-4 py-2 text-sm transition duration-300 hover:text-red-700" role="menuitem" tabindex="-1" id="menu-item-0">Delete</a>
-                <a href="#suspend" class="suspend text-yellow-500 block px-4 py-2 text-sm transition duration-300 hover:text-yellow-700" role="menuitem" tabindex="-1" id="menu-item-1">Suspend Account</a>
+                <a href="#" record="user" person="{{ $user->name }}" record-id="{{ $user->id }}" class="delete text-red-500 block px-4 py-2 text-sm transition duration-300 hover:text-red-700" role="menuitem" tabindex="-1">Delete</a>
+                @if($user->is_active === 1)
+                    <a href="{{ route('user.suspend', $user->id) }}" class="suspend text-yellow-500 block px-4 py-2 text-sm transition duration-300 hover:text-yellow-700" role="menuitem" tabindex="-1">Suspend Account</a>
+                @else
+                    <a href="{{ route('user.suspend', $user->id) }}" class="suspend text-green-500 block px-4 py-2 text-sm transition duration-300 hover:text-green-700" role="menuitem" tabindex="-1">Activate Account</a>
+                @endif
             </div>
         </div>
     </div>

@@ -31,6 +31,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     // Route::post('/users/{user}/update', [UserController::class, 'update'])->name('user.update');
     Route::get('/users/{user}/edit',[UserController::class, 'edit'])->name('user.edit');
     Route::get('/user/delete-{user}',[UserController::class, 'delete'])->name('user.delete');
+    Route::get('/user/suspend-{user}', [UserController::class, 'suspendOrActivate'])->name('user.suspend');
 
 });
 
