@@ -14,7 +14,7 @@
         <p><span class="font-bold">Phone:</span> {{ $user->phone }}</p>
     </div>
     <div class="grid-card__user-actions flex flex-row w-100 ">
-        <a class="flex-1 p-3 text-center justify-center align-items-center border-y border-slate-200 transition duration-500 text-black"
+        <a class="flex-1 p-3 text-center justify-center align-items-center border border-slate-200 transition duration-500 text-black"
             href="{{ route('user.edit', $user->id) }}">Edit Profile</a>
     </div>
     <x-user-actions :current-user="$currentUser" :user="$user"/>

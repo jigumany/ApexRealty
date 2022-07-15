@@ -27,7 +27,8 @@ class UsersTableSeeder extends Seeder
                 'password' => bcrypt('walker25'), // password
                 'remember_token' => Str::random(10),
                 'position_title' => $faker->jobTitle(),
-                'phone' => $faker->phoneNumber()
+                'phone' => $faker->phoneNumber(),
+                'image' => "https://avatars.dicebear.com/api/adventurer/" . $faker->name . ".svg"
             ]);
             $user->roles()->attach($role);
         }

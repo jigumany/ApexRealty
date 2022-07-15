@@ -46,6 +46,7 @@ class DatabaseSeeder extends Seeder
             'position_title' => 'Web2web Support',
             'password' => bcrypt('walker25'),
             'phone' => $faker->phoneNumber(),
+            'image' => 'https://avatars.dicebear.com/api/adventurer/super-admin.svg',
             'is_super_admin' => 1,
             'is_admin' => 1,
             'is_active' => 1

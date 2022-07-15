@@ -16,7 +16,7 @@
 
 <body class="hold-transition login-page">
 	<main class="w-full">
-		<section class="relative w-full h-full py-40 min-h-screen" style="background: linear-gradient(to right, #4ca1af, #c4e0e5);">
+		<section class="relative w-full h-full py-40 min-h-screen bg-white">
 			<div class="absolute"></div>
 			<div class="container mx-auto px-4 h-full">
 				<div class="flex content-center items-center justify-center h-full">
@@ -27,18 +27,19 @@
 						<div
 							class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-200 border-0">
 							<div class="flex-auto px-4 lg:px-10 py-4">
+								<h1 class="mb-3 text-3xl text-center">Sign in to <br><span class="font-bold">ApexRealty</span></h1>
 								<form action="{{ route('login.post') }}" method="POST" role="form">
 									@csrf
 									<div class="relative w-full mb-3">
 										<label
-											class="block uppercase text-white text-xs font-bold mb-2"
+											class="block uppercase text-black text-xs font-bold mb-2"
 											for="email">
 											Email</label>
 										<input 
 											type="email"
 											name="email" 
 											id="email"
-											class="form-input border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+											class="form-input border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded-sm text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
 											placeholder="Email" 
 											autocomplete="off"
 											style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAPhJREFUOBHlU70KgzAQPlMhEvoQTg6OPoOjT+JWOnRqkUKHgqWP4OQbOPokTk6OTkVULNSLVc62oJmbIdzd95NcuGjX2/3YVI/Ts+t0WLE2ut5xsQ0O+90F6UxFjAI8qNcEGONia08e6MNONYwCS7EQAizLmtGUDEzTBNd1fxsYhjEBnHPQNG3KKTYV34F8ec/zwHEciOMYyrIE3/ehKAqIoggo9inGXKmFXwbyBkmSQJqmUNe15IRhCG3byphitm1/eUzDM4qR0TTNjEixGdAnSi3keS5vSk2UDKqqgizLqB4YzvassiKhGtZ/jDMtLOnHz7TE+yf8BaDZXA509yeBAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;">
@@ -46,7 +47,7 @@
 
 									<div class="relative w-full mb-3">
 										<label
-											class="block uppercase text-white text-xs font-bold mb-2"
+											class="block uppercase text-black text-xs font-bold mb-2"
 											for="password">
 											Password
 										</label>
@@ -54,7 +55,7 @@
 											type="password"
 											name="password" 
 											id="password"
-											class="form-input border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+											class="form-input border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded-sm text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
 											placeholder="Password" 
 											autocomplete="off"
 											style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAPhJREFUOBHlU70KgzAQPlMhEvoQTg6OPoOjT+JWOnRqkUKHgqWP4OQbOPokTk6OTkVULNSLVc62oJmbIdzd95NcuGjX2/3YVI/Ts+t0WLE2ut5xsQ0O+90F6UxFjAI8qNcEGONia08e6MNONYwCS7EQAizLmtGUDEzTBNd1fxsYhjEBnHPQNG3KKTYV34F8ec/zwHEciOMYyrIE3/ehKAqIoggo9inGXKmFXwbyBkmSQJqmUNe15IRhCG3byphitm1/eUzDM4qR0TTNjEixGdAnSi3keS5vSk2UDKqqgizLqB4YzvassiKhGtZ/jDMtLOnHz7TE+yf8BaDZXA509yeBAAAAAElFTkSuQmCC&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: auto;">
@@ -64,8 +65,9 @@
 											<input
 												id="customCheckLogin" 
 												type="checkbox"
-												class="form-checkbox border-0 rounded text-blueGray-700 ml-1 w-5 h-5 ease-linear transition-all duration-150">
-											<span class="ml-2 text-sm font-semibold text-blueGray-600">
+												class="form-checkbox border rounded text-blueGray-700 ml-1 w-5 h-5 ease-linear transition-all duration-150">
+											<span 
+												class="ml-2 text-sm font-semibold text-blueGray-600">
 												Remember me
 											</span>
 										</label>
@@ -77,7 +79,7 @@
 									@endif
 									<div class="text-center mt-6">
 										<button
-											class="bg-[#f9f122] text-black active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
+											class="bg-[#f9f122] hover:bg-[#f9f155] text-black active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded-sm shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition duration-150"
 											type="submit">
 											Sign In
 										</button>
