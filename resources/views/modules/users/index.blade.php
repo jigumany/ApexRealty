@@ -21,9 +21,12 @@
             <div class="row">
                 <div class="col-12">
                     @if($current_user->is_super_admin === 1 || $current_user->is_admin === 1)
+                    <div class="search-and-create lg:flex justify-between align-items-center mb-3">
                         <div class="create-user">
-                            <a class="bg-slate-900 hover:bg-slate-700 text-white transition duration-500 flex justify-center align-items-center p-3 rounded-md shadow-sm mb-3 w-[175px]" href="{{ route('user.create') }}">Create User</a>
+                            <a class="bg-slate-900 hover:bg-slate-700 text-white transition duration-500 flex justify-center align-items-center py-2 rounded-md shadow-sm w-[175px]" href="{{ route('user.create') }}">Create User</a>
                         </div>
+                        <x-search-field />
+                    </div>
                     @endif
                     <x-alert/>
                     {{-- <x-user-table :users="$users" :current-user="$current_user"/> --}}

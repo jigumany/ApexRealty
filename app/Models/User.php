@@ -122,4 +122,10 @@ class User extends Authenticatable
     {
         return $this->hasOne(Role::class);
     }
+    public function scopeFilter($query, array $filters) 
+    {
+        if(isset($filters['search'])) {
+            $query->where('name', 'like', '%' . request('search') . '%');
+        }
+    }
 }

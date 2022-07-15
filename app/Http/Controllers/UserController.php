@@ -11,8 +11,8 @@ class UserController extends Controller
 {
     public function index() {
         $current_user = auth()->user();
-        $users = User::with('roles')->get();
         $title = 'Users';
+        $users = User::latest()->filter(request(['search']))->get();
         return view('modules.users.index', compact('users', 'title', 'current_user'));
     }
 
@@ -68,4 +68,5 @@ class UserController extends Controller
         $user->delete();
         return redirect('/admin/users/')->with('success', 'User has been Deleted!');
     }
+
 }
