@@ -10,32 +10,37 @@ use App\Models\Role;
 class UserController extends Controller
 {
     public function index() {
+        // TODO sort by admin status and then name?
         $current_user = auth()->user();
         $title = 'Users';
-        $users = User::latest()->filter(request(['search']))->get();
+        $users = User::orderBy('name')->filter(request(['search']))->get();
         return view('modules.users.index', compact('users', 'title', 'current_user'));
     }
 
-    public function create(Request $request) {
+    public function create() {
         $title = 'Create User';
         $roles = Role::where('name', '!=', 'Super Admin')->get();
         return view('modules.users.create', compact('title', 'roles'));
     }
 
-    public function store(StoreUserRequest $request, $id = null) {
-        $validated = $request->validated();
+    public function store(Request $request, $id = null) {
+        $validated = $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'position_title' => 'required',
+            'phone' => 'nullable',
+        ]);
         if($id) {
             $user = User::find($id);
             if($user) {
-                $user->update($request->all());
+                $user->update($validated);
                 $user->roles()->sync($request->role_id);
                 $msg = "User has been updated!";
             }
         } else {
-            $user = User::create($request->all());
-            $user->roles()->attach($validated['role_id']);
+            $user = User::create($validated);
+            $user->roles()->attach($request->role_id);
             $msg = "User has been created!";
-
         }
 
         return redirect('/admin/users/')->with('success', $msg);

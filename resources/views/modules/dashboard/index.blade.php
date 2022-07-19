@@ -22,10 +22,10 @@
 			<div class="row">
 				<div class="col-12">
 					<div class="dashboard-cards grid gap-4 lg:grid-cols-4 lg:grid-rows-3 md:grid-cols-2 mb-5">
-						<x-dashboard-card title='Users' count="1" />
+						{{-- <x-dashboard-card title='Users' count="1" />
 						<x-dashboard-card title='Leads' count="12" />
 						<x-dashboard-card title='Active Leads' count="20" />
-						<x-dashboard-card title='Completed Leads' count="100" />
+						<x-dashboard-card title='Completed Leads' count="100" /> --}}
                     </div>
 				</div>
 			</div>

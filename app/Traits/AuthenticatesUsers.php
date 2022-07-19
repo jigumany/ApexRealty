@@ -68,7 +68,7 @@ trait AuthenticatesUsers
     {
         $request->validate([
             $this->username() => 'required|string',
-            'password' => 'required|string'
+            'password' => 'required|string',
         ]);
     }
 
@@ -143,9 +143,17 @@ trait AuthenticatesUsers
      */
     protected function sendFailedLoginResponse(Request $request)
     {
-        throw ValidationException::withMessages([
-            $this->username() => [trans('auth.failed')],
-        ]);
+        if($this->username()) {
+            throw ValidationException::withMessages([
+                $this->username() => [trans('auth.failed')],
+            ]);
+        } 
+        
+        if($this->status()) {
+            throw ValidationException::withMessages([
+                $this->status() => [trans('auth.not_active')],
+            ]);
+        }
     }
 
     /**
@@ -156,6 +164,11 @@ trait AuthenticatesUsers
     public function username()
     {
         return 'email';
+    }
+
+    public function status()
+    {
+        return 'is_active';
     }
 
     /**

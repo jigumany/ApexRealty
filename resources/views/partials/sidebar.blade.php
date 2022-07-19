@@ -24,6 +24,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ url('/admin/leads') }}" class="nav-link">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Leads
+                        </p>
+                    </a>
+                </li>
             </ul>
         </nav>
     </div>

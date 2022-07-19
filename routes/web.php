@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\LeadController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,11 +28,15 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     
     Route::get('/users', [UserController::class, 'index']);
     Route::get('/users/create', [UserController::class, 'create'])->name('user.create');
-    Route::post('/user/store/{user?}', [UserController::class, 'store'])->name('user.store');
-    // Route::post('/users/{user}/update', [UserController::class, 'update'])->name('user.update');
     Route::get('/users/{user}/edit',[UserController::class, 'edit'])->name('user.edit');
+    Route::post('/users/store/{id?}', [UserController::class, 'store'])->name('user.store');
+    // Route::post('/users/{user}/update', [UserController::class, 'update'])->name('user.update');
+    
     Route::get('/user/delete-{user}',[UserController::class, 'delete'])->name('user.delete');
     Route::get('/user/suspend-{user}', [UserController::class, 'suspendOrActivate'])->name('user.suspend');
+
+    Route::get('/leads', [LeadController::class, 'index']);
+    Route::get('/leads/create', [LeadController::class, 'create'])->name('leads.create');
 
 });
 

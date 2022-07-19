@@ -63,7 +63,8 @@
 									<div>
 										<label class="inline-flex items-center cursor-pointer">
 											<input
-												id="customCheckLogin" 
+												name="remember" 
+												id="remember"
 												type="checkbox"
 												class="form-checkbox border rounded text-blueGray-700 ml-1 w-5 h-5 ease-linear transition-all duration-150">
 											<span 
