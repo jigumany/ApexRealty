@@ -13,7 +13,9 @@ class UserController extends Controller
         // TODO sort by admin status and then name?
         $current_user = auth()->user();
         $title = 'Users';
-        $users = User::orderBy('name')->filter(request(['search']))->get();
+        $users = User::orderBy('name')->filter(request(['search']))->paginate(
+            $perPage = 9, $columns = ['*'], $pageName = 'users'
+        );
         return view('modules.users.index', compact('users', 'title', 'current_user'));
     }
 

@@ -20,6 +20,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
+                    
                     @if($current_user->is_super_admin === 1 || $current_user->is_admin === 1)
                     <div class="search-and-create lg:flex justify-between align-items-center mb-3">
                         <div class="create-user">
@@ -30,13 +31,18 @@
                     @endif
                     <x-alert/>
                     {{-- <x-user-table :users="$users" :current-user="$current_user"/> --}}
-
+                    
                     <div class="users grid gap-4 lg:grid-cols-3 lg:grid-rows-3 md:grid-cols-2 mb-5">
                         @foreach ($users as $user)
-                            <x-user-card :current-user="$current_user" :user="$user" />
+                        <x-user-card :current-user="$current_user" :user="$user" />
                         @endforeach
+                        
+                    </div>
+                    <div class="pagination mb-3">
+                        {{ $users->links() }}
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
