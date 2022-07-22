@@ -15,7 +15,7 @@ class CreateLeadPhoneTable extends Migration
     {
         Schema::create('lead_phone', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('phone');
+            $table->string('phone')->nullable();
             $table->integer('lead_id')->unsigned();
             $table->timestamps();
 

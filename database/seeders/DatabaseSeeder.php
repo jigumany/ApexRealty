@@ -18,6 +18,27 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        foreach (config('seed_data.lead_status') as $value) {
+            DB::table('lead_status')->insert([
+                'name' => $value
+            ]);
+        }
+        foreach (config('seed_data.task_statuses') as $value) {
+            DB::table('task_status')->insert([
+                'name' => $value
+            ]);
+        }
+        foreach (config('seed_data.task_types') as $value) {
+            DB::table('task_type')->insert([
+                'name' => $value
+            ]);
+        }
+        foreach (config('seed_data.document_types') as $value) {
+            DB::table('document_type')->insert([
+                'name' => $value
+            ]);
+        }
+        
         $faker = Faker\Factory::create();
 
         $this->call([

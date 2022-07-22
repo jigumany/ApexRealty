@@ -93,4 +93,13 @@ class Lead extends Model
     {
         return $this->first_name .  (!empty($this->middle_name)?" " . $this->middle_name . " ":"") . (!empty($this->last_name)?" " . $this->last_name:"");
     }
+    public function scopeFilter($query, array $filters) 
+    {
+        if(isset($filters['search'])) {
+            $query->where('first_name', 'like', '%' . request('search') . '%')
+                ->orWhere('last_name', 'like', '%' . request('search') . '%')
+                ->orWhere('project_type', 'like', '%' . request('search') . '%')
+                ->orWhere('address_city', 'like', '%' . request('search') . '%');
+        }
+    }
 }

@@ -37,6 +37,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     Route::get('/leads', [LeadController::class, 'index']);
     Route::get('/leads/create', [LeadController::class, 'create'])->name('leads.create');
+    Route::get('/leads/{lead}/edit',[LeadController::class, 'edit'])->name('leads.edit');
+    Route::post('/leads/store/{id?}', [LeadController::class, 'store'])->name('leads.store');
+    Route::get('/leads/lead/{id?}', [LeadController::class, 'show'])->name('leads.view');
 
 });
 

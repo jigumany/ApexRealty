@@ -15,7 +15,7 @@ class CreateLeadEmailTable extends Migration
     {
         Schema::create('lead_email', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('email');
+            $table->string('email')->default('');
             $table->integer('lead_id')->unsigned();
             $table->timestamps();
 

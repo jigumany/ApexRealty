@@ -26,7 +26,7 @@
                         <div class="create-user">
                             <a class="bg-slate-900 hover:bg-slate-700 text-white transition duration-500 flex justify-center align-items-center py-2 rounded-md shadow-sm w-[175px]" href="{{ route('user.create') }}">Create User</a>
                         </div>
-                        <x-search-field />
+                        <x-search-field placeholder='Search users..' />
                     </div>
                     @endif
                     <x-alert/>
