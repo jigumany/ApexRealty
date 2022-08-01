@@ -756,6 +756,16 @@ select {
   padding-top: 0;
   padding-bottom: 0;
 }
+.form-select {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: 2.5rem;
+  -webkit-print-color-adjust: exact;
+     color-adjust: exact;
+          print-color-adjust: exact;
+}
 .form-checkbox,.form-radio {
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -1628,6 +1638,14 @@ select {
     grid-column: span 2 / span 2;
   }
 
+  .lg\:col-span-3 {
+    grid-column: span 3 / span 3;
+  }
+
+  .lg\:col-span-6 {
+    grid-column: span 6 / span 6;
+  }
+
   .lg\:mt-0 {
     margin-top: 0px;
   }
@@ -1655,6 +1673,22 @@ select {
   .lg\:px-10 {
     padding-left: 2.5rem;
     padding-right: 2.5rem;
+  }
+
+  .selection\:lg\:col-span-3 *::-moz-selection {
+    grid-column: span 3 / span 3;
+  }
+
+  .selection\:lg\:col-span-3 *::selection {
+    grid-column: span 3 / span 3;
+  }
+
+  .selection\:lg\:col-span-3::-moz-selection {
+    grid-column: span 3 / span 3;
+  }
+
+  .selection\:lg\:col-span-3::selection {
+    grid-column: span 3 / span 3;
   }
 }
 @media (min-width: 1280px) {

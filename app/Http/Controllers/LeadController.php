@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Lead;
 use App\Models\LeadEmail;
+use App\Models\Task;
 use App\Models\LeadStatus;
 
 class LeadController extends Controller
@@ -22,7 +23,8 @@ class LeadController extends Controller
         $lead = Lead::find($id);
         $status = LeadStatus::find($lead->status);
         $current_user = auth()->user();
-        return view('modules.leads.view', compact('title', 'lead', 'status', 'current_user'));
+        $tasks = Task::where('lead_id', '=', $id)->get();
+        return view('modules.leads.view', compact('title', 'lead', 'status', 'current_user', 'tasks'));
     }   
 
     public function create(Lead $lead) {
@@ -65,7 +67,6 @@ class LeadController extends Controller
                 foreach($request['emails'] as $email) {
                     $emails[] = $email;
                 }
-                // $lead->emails()->update($request['emails']);
                 $lead->modified_by_id = auth()->user()->id;
                 $msg = "Lead has been updated!";
             }

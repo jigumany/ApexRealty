@@ -1,3 +1,3 @@
-<div>
-    <!-- Well begun is half done. - Aristotle -->
+<div class="task">
+    {{ $task->name }}
 </div>

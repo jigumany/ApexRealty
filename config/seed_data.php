@@ -4,7 +4,7 @@ return [
     'document_types' => ['Contract', 'License Agreement', 'EULA', 'Other'],
     'task_statuses' => ['Not Started', 'Started', 'Completed', 'Cancelled'],
     'task_types' => ['Task', 'Meeting', 'Phone call'],
-    'lead_status' => ['New', 'Opportunity', 'Customer', 'Close'],
+    'lead_status' => ['Active Lead', 'Deal Pending', 'Deal In Progress', 'Deal Concluded'],
     'settings' => ['crm_email' => 'george@web2web.co.za', 'enable_email_notification' => 1],
     'mailbox_folders' => array(
         array("title"=>"Inbox", "icon" => "fa fa-inbox"),

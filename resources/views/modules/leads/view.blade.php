@@ -27,7 +27,7 @@
                         {{-- TODO SETUP IF Assign isn't assigned. --}}
                         <a href="{{ route('leads.edit', $lead->id) }}" class="ap-btn assign">Assign</a>
                         @if($current_user->is_admin === 1 || $current_user->is_super_admin === 1)
-                            <a href="#" class="ap-btn assign">Create Task</a>
+                            <a href="{{ route('tasks.create', $lead->id) }}" class="ap-btn assign">Create Task</a>
                         @endif
                     </div>
                     <div class="default-layout">
@@ -65,6 +65,7 @@
                         <div class="task-info shadow-sm round-sm p-2 bg-white xl:col-span-3 col-span-6">
                             @if($tasks ?? '')
                                 <h4 class="text-lg mb-3">Tasks</h4>
+                                <x-tasks-list :tasks='$tasks' />
                             @else
                                 <p>No tasks for this lead at the moment.</p>
                             @endif

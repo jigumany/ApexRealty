@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+<x-alert />
 <div class="content-wrapper">
     <section class="content-header">
         <div class="container-fluid">
@@ -20,14 +21,14 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    @if($current_user->is_super_admin === 1 || $current_user->is_admin === 1)
                     <div class="search-and-create lg:flex justify-between align-items-center mb-3">
+                        @if($current_user->is_super_admin === 1 || $current_user->is_admin === 1)
                         <div class="create-user">
                             <a class="bg-slate-900 hover:bg-slate-700 text-white transition duration-500 flex justify-center align-items-center py-2 rounded-md shadow-sm w-[175px]" href="{{ route('leads.create') }}">Create New Lead</a>
                         </div>
+                        @endif
                         <x-search-field placeholder='Search Leads..' />
                     </div>
-                    @endif
                     <div class="grid md:grid-cols-4 sm:grid-cols-2 gap-4">
                         @foreach ($leads as $lead)
                             <x-lead-card :lead="$lead" />

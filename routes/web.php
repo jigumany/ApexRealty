@@ -3,6 +3,7 @@
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LeadController;
+use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -47,6 +48,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/leads/assign/{id?}', [LeadController::class, 'assign'])->name('leads.assign');
 
     // Tasks
+    Route::get('/tasks', [TaskController::class, 'index']);
+    Route::get('/tasks/create/{lead}', [TaskController::class, 'create'])->name('tasks.create');
+    Route::get('/tasks/{task}/edit',[TaskController::class, 'edit'])->name('tasks.edit');
+    Route::post('/tasks/store/{lead}', [TaskController::class, 'store'])->name('tasks.store');
 
 });
 

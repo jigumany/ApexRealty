@@ -6,14 +6,15 @@ use Illuminate\View\Component;
 
 class TasksList extends Component
 {
+    public $tasks;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($tasks)
     {
-        //
+        $this->tasks = $tasks;
     }
 
     /**

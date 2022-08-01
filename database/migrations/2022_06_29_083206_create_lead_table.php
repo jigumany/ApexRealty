@@ -18,7 +18,7 @@ class CreateLeadTable extends Migration
             $table->string('first_name');
             $table->string('middle_name')->nullable();
             $table->string('last_name');
-            $table->integer('status');
+            $table->integer('status')->default('Active Lead');
             $table->string('referral_source')->nullable();
             $table->string('position_title')->nullable();
             $table->string('industry')->nullable();

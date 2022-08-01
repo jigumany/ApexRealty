@@ -1,12 +1,12 @@
 @php
     $classes = array();
-    if($lead->getStatus()->first()->name === "New") {
+    if($lead->getStatus()->first()->name === "Active Lead") {
         array_push($classes, 'new');
-    } else if($lead->getStatus()->first()->name === "Opportunity") {
+    } else if($lead->getStatus()->first()->name === "Deal Pending") {
         array_push($classes, 'ap-opportunity');
-    } else if($lead->getStatus()->first()->name === "Customer") {
+    } else if($lead->getStatus()->first()->name === "Deal In Progress") {
         array_push($classes, 'ap-customer');
-    } else if($lead->getStatus()->first()->name === "Close") {
+    } else if($lead->getStatus()->first()->name === "Deal Concluded") {
         array_push($classes, 'ap-close');
     }
 @endphp 
