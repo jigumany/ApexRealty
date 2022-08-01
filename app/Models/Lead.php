@@ -88,11 +88,12 @@ class Lead extends Model
     {
         return $this->hasMany(Task::class, 'lead_id');
     }
-
+    
     public function getName()
     {
         return $this->first_name .  (!empty($this->middle_name)?" " . $this->middle_name . " ":"") . (!empty($this->last_name)?" " . $this->last_name:"");
     }
+
     public function scopeFilter($query, array $filters) 
     {
         if(isset($filters['search'])) {

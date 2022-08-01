@@ -26,6 +26,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         return view('modules.forbidden.forbidden_area');
     });
     
+    // Users
     Route::get('/users', [UserController::class, 'index']);
     Route::get('/users/create', [UserController::class, 'create'])->name('user.create');
     Route::get('/users/{user}/edit',[UserController::class, 'edit'])->name('user.edit');
@@ -35,11 +36,17 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/user/delete-{user}',[UserController::class, 'delete'])->name('user.delete');
     Route::get('/user/suspend-{user}', [UserController::class, 'suspendOrActivate'])->name('user.suspend');
 
+    // Leads
     Route::get('/leads', [LeadController::class, 'index']);
     Route::get('/leads/create', [LeadController::class, 'create'])->name('leads.create');
     Route::get('/leads/{lead}/edit',[LeadController::class, 'edit'])->name('leads.edit');
     Route::post('/leads/store/{id?}', [LeadController::class, 'store'])->name('leads.store');
     Route::get('/leads/lead/{id?}', [LeadController::class, 'show'])->name('leads.view');
+
+    Route::get('/leads/delete-{lead}',[LeadController::class, 'delete'])->name('leads.delete');
+    Route::get('/leads/assign/{id?}', [LeadController::class, 'assign'])->name('leads.assign');
+
+    // Tasks
 
 });
 

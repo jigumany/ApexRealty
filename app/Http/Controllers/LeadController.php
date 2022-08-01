@@ -20,7 +20,9 @@ class LeadController extends Controller
     public function show($id) {
         $title = 'Lead'; 
         $lead = Lead::find($id);
-        return view('modules.leads.view', compact('title'));
+        $status = LeadStatus::find($lead->status);
+        $current_user = auth()->user();
+        return view('modules.leads.view', compact('title', 'lead', 'status', 'current_user'));
     }   
 
     public function create(Lead $lead) {
@@ -59,12 +61,11 @@ class LeadController extends Controller
             $lead = Lead::find($id);
             if($lead) {
                 $lead->update($validated);
-                // dd($request['emails']);
+                $emails = [];
                 foreach($request['emails'] as $email) {
-                    // $lead->emails()->update($email);
-                    $lead->emails()->update(['email' => $email]);
+                    $emails[] = $email;
                 }
-                // $lead->emails()->sync($request['emails']);
+                // $lead->emails()->update($request['emails']);
                 $lead->modified_by_id = auth()->user()->id;
                 $msg = "Lead has been updated!";
             }
@@ -86,5 +87,13 @@ class LeadController extends Controller
         $projecttypes = ['Lease Renewal', 'Other'];
 
         return view('modules.leads.edit', compact('title', 'lead', 'statuses', 'referrals', 'projecttypes'));
+    }
+    public function assign(User $user) {
+        $users = $user::where('is_active', '=', 1)->where('is_super_admin', '=', 0)->where('is_admin', '=', 0)->get(); // Grab all users on the system that aren't admins or super admins
+        // return view('modules.leads.assign', compact('users'));
+    }
+    public function delete(Lead $lead) {
+        $lead->delete();
+        return redirect('/admin/leads/')->with('success', 'Lead has been Deleted!');
     }
 }

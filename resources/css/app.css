@@ -17,3 +17,58 @@
     border: 3px solid black;
     border-radius: 50%;
 }
+.lead {}
+@layer components {
+    .ap-badge {
+        @apply px-3 py-1 text-sm font-bold transition-colors duration-200 cursor-pointer transform rounded-full text-white bg-slate-900;
+    }
+    .ap-badge.ap-new {
+        @apply bg-green-600 hover:bg-green-500;
+    }
+    .ap-badge.ap-opportunity {
+        @apply bg-yellow-600 hover:bg-yellow-500;
+    }
+    .ap-badge.ap-customer {
+        @apply bg-purple-600 hover:bg-purple-500;
+    }
+    .ap-badge.ap-close {
+        @apply bg-red-600 hover:bg-red-500;
+    }
+    .ap-badge-container, .lead__meta {
+        @apply flex text-sm mr-1;
+        align-items: center;
+    }
+    .default-layout {
+        @apply grid gap-4 grid-cols-6;
+    }
+    .lead-detail {
+        @apply mb-2;
+    }
+    .ap-btn {
+        @apply flex p-3 text-center justify-center border border-slate-200 transition duration-500 text-black w-[150px];
+    }
+    .ap-btn.edit {}
+    .ap-btn.update {}
+    .ap-btn.view {}
+    /* .lead-detail:nth-child(even) {
+        @apply bg-slate-500
+    }
+    .lead-detail:nth-child(odd) {
+        @apply bg-slate-200
+    } */
+}
+.actions {
+    display: flex;
+}
+.actions .ap-btn:not(:last-child) {
+    margin-right: 10px;
+}
+.ap-badge-container:last-child {
+    margin-right: 0px;
+}
+.ap-badge-container span {
+    margin-left: 5px;
+}
+.lead-detail:last-child {
+    margin-bottom: 0px;
+}

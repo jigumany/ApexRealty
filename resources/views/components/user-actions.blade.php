@@ -22,6 +22,7 @@
                 @else
                     <a href="{{ route('user.suspend', $user->id) }}" class="suspend text-green-500 block px-4 py-2 text-sm transition duration-300 hover:text-green-700" role="menuitem" tabindex="-1">Activate Account</a>
                 @endif
+                <a href="" class="block px-4 py-2 text-sm transition duration-300">Assign Lead(s)</a>
             </div>
         </div>
     </div>
