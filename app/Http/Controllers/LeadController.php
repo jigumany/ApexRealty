@@ -90,7 +90,6 @@ class LeadController extends Controller
     }
     public function assign(User $user) {
         $users = $user::where('is_active', '=', 1)->where('is_super_admin', '=', 0)->where('is_admin', '=', 0)->get(); // Grab all users on the system that aren't admins or super admins
-        // return view('modules.leads.assign', compact('users'));
     }
     public function delete(Lead $lead) {
         $lead->delete();
