@@ -26,13 +26,20 @@
                             @csrf
                             <div class="inner-form grid grid-cols-6 gap-2 gap-y-0 grid-flow-row">
                                 {{-- Name and Priority --}}
-                                <input placeholder="Task Name" class="lg:col-span-3 md:col-span-3 col-span-6 mb-3 shadow-sm appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="name" id="name">
-                                <input placeholder="Priority" class="lg:col-span-3 md:col-span-3 col-span-6 mb-3 shadow-sm appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="priority" id="priority">
+                                <input placeholder="Task Name" class="lg:col-span-3 md:col-span-3 col-span-6 mb-3 shadow-sm appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="name" id="name" value="{{ old('name') }}">
+                                @error('name')
+                                    <p>{{ $message }}</p>
+                                @enderror
+                                <select class="form-select lg:col-span-3 md:col-span-3 col-span-6 w-full mb-3 py-2 px-3 border rounded-sm shadow-sm text-gray-700 focus:outline-none focus:shadow-outline" placeholder="Priority" name="priority" id="priority">
+                                    <option placeholder="Assign Status" value="Assign Priority" class="text-gray-700">Assign Priority</option>
+                                    @foreach ($priority as $s)
+                                        <option placeholder="{{ $s }}" value="{{ $s }}" class="text-gray-700">{{ $s }}</option>
+                                    @endforeach
+                                </select>
                                 
                                 {{-- Date End and Start --}}
-                                <input type="date" class="form-input md:col-span-3 col-span-6 w-full mb-3 py-2 px-3 border rounded-sm shadow-sm text-gray-700 focus:outline-none focus:shadow-outline" name="start_date" id="startDate">
-                                <input type="date" class="form-input md:col-span-3 col-span-6 w-full mb-3 py-2 px-3 border rounded-sm shadow-sm text-gray-700 focus:outline-none focus:shadow-outline" name="end_date" id="startDate">
-                                
+                                <input type="date" class="form-input md:col-span-3 col-span-6 w-full mb-3 py-2 px-3 border rounded-sm shadow-sm text-gray-700 focus:outline-none focus:shadow-outline" name="start_date" id="startDate" value="{{ old('start_date') }}">
+                                <input type="date" class="form-input md:col-span-3 col-span-6 w-full mb-3 py-2 px-3 border rounded-sm shadow-sm text-gray-700 focus:outline-none focus:shadow-outline" name="end_date" id="endDate" value="{{ old('end_date') }}">
                                 
                                 {{-- Status --}}
                                 <select class="form-select lg:col-span-3 md:col-span-3 col-span-6 w-full mb-3 py-2 px-3 border rounded-sm shadow-sm text-gray-700 focus:outline-none focus:shadow-outline" placeholder="Status" name="status" id="status">
@@ -49,7 +56,7 @@
                                 </select>
 
                                 {{-- Description of Task --}}
-                                <textarea name="description" placeholder="Description of Task" id="description" cols="30" rows="3" class="lg:col-span-6 col-span-6 mb-3 shadow-sm appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
+                                <textarea name="description" placeholder="Description of Task" id="description" cols="30" rows="3" class="lg:col-span-6 col-span-6 mb-3 shadow-sm appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">{{ old('description') }}</textarea>
                             </div>
                             <input class="py-2 px-3 transition duration-500 text-white hover:text-black bg-green-400 rounded-sm shadow-sm" type="submit" value="Create Task">
                         </form>

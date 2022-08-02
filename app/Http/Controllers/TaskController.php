@@ -27,9 +27,10 @@ class TaskController extends Controller
         $title = 'Create Task';
         $status = TaskStatus::all();
         $type = TaskType::all();
+        $priority = ['Low', 'Normal', 'High', 'Urgent'];
         $lead_type = $lead->project_type;
         $current_user = auth()->user();
-        return view('modules.tasks.create', compact('title', 'status', 'type', 'lead_type', 'current_user', 'lead'));
+        return view('modules.tasks.create', compact('title', 'status', 'type', 'lead_type', 'current_user', 'lead', 'priority'));
     }
 
     public function store(Request $request, Lead $lead) {
@@ -55,7 +56,7 @@ class TaskController extends Controller
             'lead_type' => $lead->project_type,
         ]);
 
-        return redirect('/admin/leads')->with('success', 'Task has been created.');
+        return redirect('/admin/leads/')->with('success', 'Task has been created.');
     }
     
     public function edit() {}

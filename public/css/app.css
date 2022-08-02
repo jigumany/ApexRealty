@@ -1050,6 +1050,15 @@ select {
 .h-10 {
   height: 2.5rem;
 }
+.h-6 {
+  height: 1.5rem;
+}
+.h-3 {
+  height: 0.75rem;
+}
+.h-4 {
+  height: 1rem;
+}
 .min-h-screen {
   min-height: 100vh;
 }
@@ -1088,6 +1097,15 @@ select {
 }
 .w-\[175px\] {
   width: 175px;
+}
+.w-6 {
+  width: 1.5rem;
+}
+.w-3 {
+  width: 0.75rem;
+}
+.w-4 {
+  width: 1rem;
 }
 .min-w-0 {
   min-width: 0px;
@@ -1499,6 +1517,14 @@ select {
 .lead-detail:last-child {
     margin-bottom: 0px;
 }
+.brand-link.logo-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    padding: 3px;
+}
 .hover\:bg-\[\#f9f155\]:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(249 241 85 / var(--tw-bg-opacity));
@@ -1673,22 +1699,6 @@ select {
   .lg\:px-10 {
     padding-left: 2.5rem;
     padding-right: 2.5rem;
-  }
-
-  .selection\:lg\:col-span-3 *::-moz-selection {
-    grid-column: span 3 / span 3;
-  }
-
-  .selection\:lg\:col-span-3 *::selection {
-    grid-column: span 3 / span 3;
-  }
-
-  .selection\:lg\:col-span-3::-moz-selection {
-    grid-column: span 3 / span 3;
-  }
-
-  .selection\:lg\:col-span-3::selection {
-    grid-column: span 3 / span 3;
   }
 }
 @media (min-width: 1280px) {
